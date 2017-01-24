@@ -2,6 +2,43 @@
 
 namespace CSCI120
 {
+	public class TestClass
+	{
+		public void Exec(string scriptName)
+		{
+			// create an object
+			int score = 0;
+			int total = 0;
+
+			Console.WriteLine ("**************************************************");
+			Console.WriteLine ("\tTesting " + scriptName);
+			Console.WriteLine ("**************************************************");
+
+			try
+			{
+				RunTests(ref score, ref total);
+			}
+			catch (Exception ex) {
+				TestStatement (false, ex.Message + "\n" + ex.StackTrace, ref score, ref total);
+			}
+				
+			Console.Write ("Press a key to exit...");
+			Console.ReadKey ();
+		}
+
+		virtual public void RunTests(ref int score, ref int total)
+		{
+			TestStatement (true, "Empty test script", ref score, ref score);
+		}
+
+		public static void TestStatement(bool value, string item, ref int score, ref int total)
+		{
+			total ++;
+			if (value) score ++;
+			Console.WriteLine ("\t'{0}' {1} ({2}/{3})", item, value ? "Passed" : "Failed", score, total);
+		}
+	}
+
 	public interface IOperationCounter
 	{
 		// Allow access to the number of operations required by 

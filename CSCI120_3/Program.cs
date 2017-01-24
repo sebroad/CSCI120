@@ -23,34 +23,15 @@ namespace CSCI120_3
 	 *    ...
 	 * }
 	 **/
-	class Lab3
+	class Lab3 : CSCI120.TestClass
 	{
 		public static void Main (string[] args)
 		{
-			// create an object
-			int score = 0;
-			int total = 0;
-
-			try
-			{
-				RunTests(ref score, ref total);
-			}
-			catch (Exception ex) {
-				TestStatement (false, ex.Message + "\n" + ex.StackTrace, ref score, ref total);
-			}
-
-
-			Console.Write ("Press a key to exit...");
-			Console.ReadKey ();
+			(new Lab3()).Exec ("ArrayStack IList implementation");
 		}
 
-		public static void RunTests(ref int score, ref int total)
+		override public void RunTests(ref int score, ref int total)
 		{
-
-			Console.WriteLine ("**************************************************");
-			Console.WriteLine ("\tTesting ArrayStack IList implementation");
-			Console.WriteLine ("**************************************************");
-
 			CSCI120.Untyped.IList arrayStack = null;
 			arrayStack = (CSCI120.Untyped.IList)(Activator.CreateInstanceFrom ("CSCI120_3.exe", "CSCI120_3.ArrayStack").Unwrap());
 			TestStatement (arrayStack != null, "Created an arrayStack class", ref score, ref total);
@@ -119,14 +100,6 @@ namespace CSCI120_3
 			TestStatement (Convert.ToInt32(arrayStack.Get(1)) == 2, "Two in second position", ref score, ref total);
 			TestStatement (Convert.ToInt32(arrayStack.Get(2)) == 1, "One in third position", ref score, ref total);
 			TestStatement (Convert.ToInt32(arrayStack.Get(3)) == 0, "Zero in fourth position", ref score, ref total);
-
-		}
-
-		public static void TestStatement(bool value, string item, ref int score, ref int total)
-		{
-			total ++;
-			if (value) score ++;
-			Console.WriteLine ("\t'{0}' {1} ({2}/{3})", item, value ? "Passed" : "Failed", score, total);
 		}
 	}
 }
