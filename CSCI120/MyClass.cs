@@ -49,6 +49,15 @@ namespace CSCI120
 		void ResetOperations();
 	}
 
+	public interface IArrayBased
+	{
+		// Initialize a blank list
+		void Initialize();
+
+		// Resize the list to capacity n
+		void Resize(int n);
+	}
+
 	namespace Untyped
 	{
 		
@@ -56,9 +65,6 @@ namespace CSCI120
 		{
 			// The length of the list
 			int Length { get; }
-
-			// Initialize a blank list
-			void Initialize();
 
 			// Add an item x at position i
 			void Add (int i, object x);
@@ -74,9 +80,6 @@ namespace CSCI120
 
 			// Clear the list
 			void Clear();
-
-			// Resize the list to capacity n
-			void Resize(int n);
 		}
 
 		public interface IStack : IOperationCounter
@@ -115,6 +118,152 @@ namespace CSCI120
 			// Remove an item from the beginning
 			object RemoveFirst();
 
+		}
+
+		public class Node
+		{
+			public Node(object x, Node next) {
+				Data = x;
+				Next = next;
+			}
+			public object Data { get; set; }
+			public Node Next { get; set; }
+		}
+
+		public class DoubleNode
+		{
+			public DoubleNode(object x, DoubleNode prev, DoubleNode next) {
+				Data = x;
+				Prev = prev;
+				Next = next;
+			}
+			public object Data { get; set; }
+			public DoubleNode Next { get; set; }
+			public DoubleNode Prev { get; set; }
+		}
+
+		public class TreeNode {
+			public TreeNode(object x, TreeNode left, TreeNode right) {
+				Data = x;
+				Left = left;
+				Right = right;
+			}
+			public object Data { get; set; }
+			public TreeNode Left { get; set; }
+			public TreeNode Right { get; set; }
+		}
+			
+	}
+
+	namespace Generic
+	{
+		public interface IList<T> : IOperationCounter
+		{
+			// The length of the list
+			int Length { get; }
+
+			// Add an item x at position i
+			void Add (int i, T x);
+
+			// Remove the item at position i
+			void Remove (int i);
+
+			// Get the item at position i
+			T Get (int i);
+
+			// Set the value x at position i
+			void Set(int i, T x);
+
+			// Clear the list
+			void Clear();
+		}
+
+		public interface IStack<T> : IOperationCounter
+		{
+			// Add an item to the top of the stack
+			void Push(T x);
+
+			// View the top item
+			T Top { get; }
+
+			// Remove the top item
+			void Pop();
+		}
+
+		public interface IQueue<T> : IOperationCounter
+		{
+			// Add an item to the end of the queue
+			void Enqueue(T x);
+
+			// Remove the item at the beginning of the queue
+			T Dequeue();
+		}
+
+		public interface IDeque<T> : IOperationCounter
+		{
+
+			// Add an item to the end
+			void AddLast(T x);
+
+			// Add an item to the beginning
+			void AddFirst(T x);
+
+			// Remove an item from the end
+			T RemoveLast();
+
+			// Remove an item from the beginning
+			T RemoveFirst();
+
+		}
+
+		public interface IHashtable<T> : IOperationCounter, IArrayBased
+		{
+			// Hash a value
+			int Hash(T x);
+
+			// Add an item to the Hashtable
+			void Add(T x);
+
+			// Remove an item from the Hashtable
+			void Remove(T x);
+
+			// Find an item in the Hashtable
+			T Find(T x);
+		}
+
+		public class Node<T>
+		{
+			public Node(T x, Node<T> next) {
+				Data = x;
+				Next = next;
+			}
+			public T Data { get; set; }
+			public Node<T> Next { get; set; }
+		}
+
+		public class DoubleNode<T>
+		{
+			public DoubleNode (T x, DoubleNode<T> prev, DoubleNode<T> next)
+			{
+				Data = x;
+				Prev = prev;
+				Next = next;
+			}
+			public T Data { get; set; }
+			public DoubleNode<T> Next { get; set; }
+			public DoubleNode<T> Prev { get; set; }
+		}
+
+		public class TreeNode<T> {
+			public TreeNode (T x, TreeNode<T> left, TreeNode<T> right)
+			{
+				Data = x;
+				Left = left;
+				Right = right;
+			}
+			public T Data { get; set; }
+			public TreeNode<T> Left { get; set; }
+			public TreeNode<T> Right { get; set; }
 		}
 
 	}

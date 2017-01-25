@@ -1,4 +1,5 @@
 ﻿using System;
+using CSCI120;
 using CSCI120.Untyped;
 
 namespace CSCI120_3
@@ -8,6 +9,7 @@ namespace CSCI120_3
 	 * Define the ArrayStack class in namespace CSCI120_3,
 	 * implementing the interfaces 
 	 *  + CSCI120.Untyped.IList
+	 *  + CSCI120.IArrayBased
 	 * 
 	 * This will also implement the inherited interface
 	 * IOperationCounter. Whenever your list examines or
@@ -15,6 +17,7 @@ namespace CSCI120_3
 	 * operation counter variable must increase by one. 
 	 * Resetting the counter assigns the counter the value 0.
 	 * 
+	 * using CSCI120;
 	 * using CSCI120.Untyped;
 	 * 
 	 * public ArrayStack : IList
@@ -37,7 +40,7 @@ namespace CSCI120_3
 			TestStatement (arrayStack != null, "Created an arrayStack class", ref score, ref total);
 
 			// create an array
-			arrayStack.Initialize();
+			((IArrayBased)arrayStack).Initialize();
 			TestStatement (arrayStack.Length == 0, "Created a new array", ref score, ref total);
 			TestStatement (arrayStack.Operations == 0, "So far, no operations", ref score, ref total);
 
@@ -60,7 +63,7 @@ namespace CSCI120_3
 
 			arrayStack.ResetOperations ();
 			TestStatement (arrayStack.Operations == 0, "Reset operations", ref score, ref total);
-			arrayStack.Resize (20);
+			((IArrayBased)arrayStack).Resize (20);
 			TestStatement (arrayStack.Length == 4, "Array has four items", ref score, ref total);
 			TestStatement (arrayStack.Operations == 4, "Used four operations", ref score, ref total);
 			TestStatement (Convert.ToInt32(arrayStack.Get(0)) == 5, "Five in first position", ref score, ref total);
@@ -79,7 +82,7 @@ namespace CSCI120_3
 			TestStatement (Convert.ToInt32(arrayStack.Get(4)) == 6, "Six in fictious fifth position", ref score, ref total);
 			TestStatement (arrayStack.Operations == 14, "Used fourteen operations", ref score, ref total);
 
-			arrayStack.Resize (21);
+			((IArrayBased)arrayStack).Resize (21);
 			TestStatement (arrayStack.Get(4) == null, "null in fictious fifth position", ref score, ref total);
 			arrayStack.Remove (0);
 			arrayStack.Remove (1);
