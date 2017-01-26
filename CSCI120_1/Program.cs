@@ -58,7 +58,7 @@ namespace CSCI120_1
 	{
 		private string species;
 		private int population;
-		Animal prey;
+		IAnimal prey;
 
 		public void initialize (string Species, int Population)
 		{
@@ -67,8 +67,8 @@ namespace CSCI120_1
 		}
 
 		public void eat (int amount)
-		{
-			throw new NotImplementedException ();
+		{ 
+			prey.Population -= amount;
 		}
 
 		public string Species {
@@ -88,10 +88,13 @@ namespace CSCI120_1
 
 		public IAnimal Prey {
 			set {
-				throw new NotImplementedException ();
-			}
+				prey = value;
+			    }
 		}
-
+		override public string ToString()
+		{
+			return string.Format("There are {0} {1}.", Population, Species);
+		}
 
 	}
 
