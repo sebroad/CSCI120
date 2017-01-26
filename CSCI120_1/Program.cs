@@ -69,7 +69,6 @@ namespace CSCI120_1
 		public void eat (int amount)
 		{
 			prey.Population -= amount;
-			population += amount;
 		}
 
 		public string Species {
@@ -91,6 +90,11 @@ namespace CSCI120_1
 			set {
 				prey = value;
 			}
+		}
+
+		override public string ToString()
+		{
+			return string.Format("There are {0} {1}.", population, species);
 		}
 
 
