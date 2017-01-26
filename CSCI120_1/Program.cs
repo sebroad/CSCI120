@@ -58,7 +58,7 @@ namespace CSCI120_1
 	{
 		private string species;
 		private int population;
-		Animal prey;
+		private IAnimal prey;
 
 		public void initialize (string Species, int Population)
 		{
@@ -68,7 +68,8 @@ namespace CSCI120_1
 
 		public void eat (int amount)
 		{
-			throw new NotImplementedException ();
+			prey.Population -= amount;
+			population += amount;
 		}
 
 		public string Species {
@@ -88,7 +89,7 @@ namespace CSCI120_1
 
 		public IAnimal Prey {
 			set {
-				throw new NotImplementedException ();
+				prey = value;
 			}
 		}
 
