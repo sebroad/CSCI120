@@ -58,7 +58,11 @@ namespace CSCI120_1
 	{
 		private string species;
 		private int population;
+
 		IAnimal prey;
+
+		private IAnimal prey;
+
 
 		public void initialize (string Species, int Population)
 		{
@@ -67,7 +71,11 @@ namespace CSCI120_1
 		}
 
 		public void eat (int amount)
+
 		{ 
+
+		{
+
 			prey.Population -= amount;
 		}
 
@@ -95,6 +103,16 @@ namespace CSCI120_1
 		{
 			return string.Format("There are {0} {1}.", Population, Species);
 		}
+
+			}
+		}
+
+		override public string ToString()
+		{
+			return string.Format("There are {0} {1}.", population, species);
+		}
+
+
 
 	}
 
