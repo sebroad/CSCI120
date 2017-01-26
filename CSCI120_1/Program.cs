@@ -56,6 +56,7 @@ namespace CSCI120_1
 			Console.WriteLine(fruit);
 			TestStatement (fruit.ToString() == "I have 3.5 pounds of Apple with 3 seeds.", "Printable", ref score, ref total);
 
+
 			// create an object
 			IAnimal lion = (IAnimal)(Activator.CreateInstanceFrom ("CSCI120_1.exe", "CSCI120_1.Animal").Unwrap());
 			TestStatement (lion != null, "Created Lion", ref score, ref total);
@@ -79,6 +80,7 @@ namespace CSCI120_1
 			// object printability
 			Console.WriteLine(lion);
 			TestStatement (lion.ToString() == "There are 10 Lion.", "Printable", ref score, ref total);
+
 
 
 			Console.Write ("Press a key to exit...");
