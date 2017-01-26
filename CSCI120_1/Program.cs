@@ -2,6 +2,115 @@
 
 namespace CSCI120_1
 {
+	public class Fruit : IFruit
+	{
+		private string name;
+		private double weight;
+		private int seeds;
+
+		public void initialize(string Name, double Weight, int Seeds)
+		{
+			name = Name;
+			weight = Weight;
+			seeds = Seeds;
+		}
+
+
+
+		public string Name
+		{
+			get
+			{
+				return name;
+			}
+		}
+
+		public int Seeds
+		{
+			get
+			{
+				return seeds;
+			}
+		}
+
+		public double Weight
+		{
+			get
+			{
+				return weight;
+			}
+		}
+
+		public void buy(double amount)
+		{
+			weight += amount;
+		}
+
+		public void eat(double amount)
+		{
+			weight -= amount;
+		}
+
+		public void removeSeeds(int number)
+		{
+			seeds -= number;
+		}
+		override public string ToString()
+		{
+			return string.Format("I have {0} pounds of {1} with {2} seeds.", Weight, Name, Seeds);
+		}
+	}
+
+	public class Animal : IAnimal
+	{
+		private string species;
+		private int population;
+		private IAnimal prey;
+		public int Population
+		{
+			get
+			{
+				return population;
+			}
+
+			set
+			{
+				population=value;
+			}
+		}
+
+		public IAnimal Prey
+		{
+			set
+			{
+				prey=value;
+			}
+		}
+
+		public string Species
+		{
+			get
+			{
+				return species;
+			}
+		}
+
+		public void eat(int amount)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void initialize(string Species, int Population)
+		{
+			species = Species;
+			population = Population;
+			prey = Prey;
+		}
+		public override string ToString()
+		{
+			return string.Format("[Animal: Population={0}, Prey={1}, Species={2}]", Population, Prey, Species);
+		}
+	}
 	public interface IFruit
 	{
 		int Seeds { get; }
