@@ -17,12 +17,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSCI120_6", "CSCI120_6\CSCI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSCI120_7", "CSCI120_7\CSCI120_7.csproj", "{762F3098-9647-480E-BD76-39AEC2951497}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSCI120_8", "CSCI120_8\CSCI120_8.csproj", "{22DBCF85-9014-4B7E-A9AB-0BEB4F189DC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22DBCF85-9014-4B7E-A9AB-0BEB4F189DC8}.Debug|x86.ActiveCfg = Debug|x86
+		{22DBCF85-9014-4B7E-A9AB-0BEB4F189DC8}.Debug|x86.Build.0 = Debug|x86
+		{22DBCF85-9014-4B7E-A9AB-0BEB4F189DC8}.Release|x86.ActiveCfg = Release|x86
+		{22DBCF85-9014-4B7E-A9AB-0BEB4F189DC8}.Release|x86.Build.0 = Release|x86
 		{26A9A67D-7672-4E9B-934E-3E98BB8164D0}.Debug|x86.ActiveCfg = Debug|x86
 		{26A9A67D-7672-4E9B-934E-3E98BB8164D0}.Debug|x86.Build.0 = Debug|x86
 		{26A9A67D-7672-4E9B-934E-3E98BB8164D0}.Release|x86.ActiveCfg = Release|x86
