@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace CSCI120_2
 {
 	public class ArrayLab : IArrayLab
@@ -10,42 +11,63 @@ namespace CSCI120_2
 
 		public void Add(object value, object[] data)
 		{
-			throw new NotImplementedException();
+			data [Count (data)] = value;
 		}
 
 		public void Clear(object[] data)
 		{
-			throw new NotImplementedException();
+			for (int idx = 0; idx < data.Length; idx++) {
+				data [idx] = null;
+			}
 		}
 
 		public int Count(object[] data)
 		{
-			throw new NotImplementedException();
+			int nonNull = 0;
+			foreach (object item in data) {
+				if (item != null)
+					nonNull++;
+			}
+			return nonNull;
+		
 		}
 
 		public int IndexOf(object value, object[] data)
 		{
-			throw new NotImplementedException();
-		}
+			for (int idx = 0; idx < data.Length; idx++) {
+				if (data [idx] == value)
+					return idx;
+			}
 
-		public object[] MakeArray(int length)
-		{
-			throw new NotImplementedException();
+			return -1;
 		}
 
 		public string MakeString(object[] data)
 		{
-			throw new NotImplementedException();
+			return MakeString (data, "");
 		}
 
 		public string MakeString(object[] data, string sep)
 		{
-			throw new NotImplementedException();
+			string result = "";
+
+			for (int idx = 0; idx < data.Length; idx++) {
+				if (data [idx] != null) {
+					if (idx > 0) {
+						result += sep.ToString ();
+					}
+					result += data [idx].ToString ();
+				}
+			}
+			return result;
 		}
 
 		public void Remove(int index, object[] data)
 		{
-			throw new NotImplementedException();
+			if (index >= 0 && index < Count (data)) {
+				data [index] = data [Count (data) - 1];
+				data [Count (data) - 1] = null;
+			}
 		}
 	}
 
