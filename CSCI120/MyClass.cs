@@ -183,11 +183,15 @@ namespace CSCI120
 			// Add an item to the top of the stack
 			void Push(T x);
 
+			// Determine if the stack is empty
+			bool IsEmpty { get; }
+
 			// View the top item
 			T Top { get; }
 
 			// Remove the top item
 			void Pop();
+
 		}
 
 		public interface IQueue<T> : IOperationCounter
@@ -197,6 +201,10 @@ namespace CSCI120
 
 			// Remove the item at the beginning of the queue
 			T Dequeue();
+
+			// Determine if the stack is empty
+			bool IsEmpty { get; }
+
 		}
 
 		public interface IDeque<T> : IOperationCounter
@@ -213,6 +221,9 @@ namespace CSCI120
 
 			// Remove an item from the beginning
 			T RemoveFirst();
+
+			// Determine if the stack is empty
+			bool IsEmpty { get; }
 
 		}
 

@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{26B169A7-5D0F-4A6D-BD87-A9C04CAE6DB4}</ProjectGuid>
+    <ProjectGuid>{A5AFC9A4-9606-42F6-8860-99EA352CDCF1}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CSCI120_1</RootNamespace>
-    <AssemblyName>CSCI120_1</AssemblyName>
+    <RootNamespace>CSCI120_10</RootNamespace>
+    <AssemblyName>CSCI120_10</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -37,4 +37,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\CSCI120\CSCI120.csproj">
+      <Project>{CFCB1C59-A58C-4221-A4B3-4E7381DE0C66}</Project>
+      <Name>CSCI120</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
