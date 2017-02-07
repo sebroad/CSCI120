@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace CSCI120_2
 {
 

@@ -3,27 +3,21 @@ namespace CSCI120_2
 {
 	public class ArrayLab : IArrayLab
 	{
-
+		
 		public ArrayLab()
 		{
 		}
 
-		// Loops through the given array and finds the first null value
-		// Once found, the given value is placed in that array at the null position
-		// The loop is broken after that
+		// Uses count to see how many list spaces are used up
+		// New element is added at the end of that list
 		public void Add(object value, object[] data)
 		{
-			for (int i = 0; i < data.Length; i++)
-			{
-				if (data[i] == null)
-				{
-					data[i] = value;
-					break;
-				}
-			}
+			data[Count(data)] = value;
 		}
 
 		// Loops through the entire array and sets all values to null
+		// Goes through entire array just in case there is a leftover
+		// element that did not get removed properly
 		public void Clear(object[] data)
 		{
 			for (int i = 0; i < data.Length; i++) 
@@ -32,28 +26,43 @@ namespace CSCI120_2
 			}
 		}
 
-		// Loops through a given array and returns the number of non-null elements
+		// Loops through a given array and counts nonNull elements
+		// returns the total at the end of the loop
 		public int Count(object[] data)
 		{
-			int total = 0;
-			for (int i = 0; i < data.Length; i++)
+			int nonNull = 0;
+			foreach (object item in data)
 			{
-				if (data[i] != null)
+				if (item != null)
 				{
-					total++;
+					nonNull++;
 				}
 			}
-			return total;
+			return nonNull;
 		}
 
 		// Loops through the data and if the value is found, then it returns the index
 		// If nothing is found, it returns -1
+		// NOTE: floats and doubles DO work
 		public int IndexOf(object value, object[] data)
 		{
 			for (int i = 0; i < data.Length; i++)
 			{
-				
-				if (data[i] == value)
+				if (value is float && data[i] is float)
+				{
+					if (Math.Abs((float)data[i] - (float)value) <= float.Epsilon)
+					{
+						return i;
+					}
+				}
+				else if (value is double && data[i] is double)
+				{
+					if (Math.Abs((double)data[i] - (double)value) <= double.Epsilon)
+					{
+						return i;
+					}
+				}
+				else if (data[i] == value)
 				{
 					return i;
 				}
@@ -61,6 +70,7 @@ namespace CSCI120_2
 			return -1;
 		}
 
+		// Returns an empty array at the length provided
 		public object[] MakeArray(int length)
 		{
 			return new object[length];
@@ -79,16 +89,13 @@ namespace CSCI120_2
 		public string MakeString(object[] data, string sep)
 		{
 			string result = "";
-			for (int i = 0; i < data.Length; i++)
+			for (int i = 0; i < Count(data); i++)
 			{
-				if (data[i] != null)
+				if (i > 0)
 				{
-					result += data[i];
-					if (i != data.Length - 1)
-					{
-						result += sep;
-					}
+					result += sep;
 				}
+				result += data[i];
 			}
 			return result;
 		}
@@ -98,17 +105,11 @@ namespace CSCI120_2
 		// set to null
 		public void Remove(int index, object[] data)
 		{
-			int lastUsedIndex = 0;
-			for (int i = 0; i < data.Length; i++)
+			if (index >= 0 && index < Count(data))
 			{
-				if (data[i] != null)
-				{
-					lastUsedIndex = i;
-				}
+				data[index] = data[Count(data) - 1];
+				data[Count(data) - 1] = null;
 			}
-
-			data[index] = data[lastUsedIndex];
-			data[lastUsedIndex] = null;
 		}
 	}
 }
