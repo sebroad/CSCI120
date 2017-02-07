@@ -80,7 +80,7 @@ namespace CSCI120_1
 		// Returns a string with the weight, name of fruit, and seed count
 		public override string ToString()
 		{
-			return string.Format("I have {2} pounds of {0} with {1} seeds.", Name, Seeds, Weight);
+			return string.Format("I have {0} pounds of {1} with {2} seeds.", weight, name, seeds);
 		}
 	}
 
