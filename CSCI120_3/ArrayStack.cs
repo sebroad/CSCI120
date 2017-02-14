@@ -21,7 +21,13 @@ namespace CSCI120_3
 
 		public void Resize (int n)
 		{
-			throw new NotImplementedException();
+			object[] temp = new object[n]; // Allocate temp array
+
+			for (int idx = 0; idx < length; idx++) {
+				counter++;
+				temp [idx] = data [idx]; // Copy array "data" to larger "temp" array
+			}
+			data = temp; // Re-assign array
 		}
 
 		#endregion
