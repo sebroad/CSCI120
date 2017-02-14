@@ -8,7 +8,7 @@ namespace CSCI120_3
 		private int length; //how long is the used portion of the array
 		private object[] data; //the array
 		private int counter;  //how many operations have we done
-		private object[] new_data; //temp data
+
 		public ArrayStack()
 		{
 			Initialize();
@@ -28,9 +28,10 @@ namespace CSCI120_3
 			object[] new_data = new object[n];
 			for (int idx = 0; idx < length; idx++) {
 				counter++;
+				new_data[idx] = data[idx];
 			}
-				
 
+			data = new_data;
 		}
 		#endregion
 		#region IList implementation
