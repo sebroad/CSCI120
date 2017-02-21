@@ -22,8 +22,8 @@ namespace CSCI120
 				TestStatement (false, ex.Message + "\n" + ex.StackTrace, ref score, ref total);
 			}
 				
-			Console.Write ("Press a key to exit...");
-			Console.ReadKey ();
+			// Console.Write ("Press a key to exit...");
+			// Console.ReadKey ();
 		}
 
 		virtual public void RunTests(ref int score, ref int total)
@@ -240,6 +240,9 @@ namespace CSCI120
 
 			// Find an item in the Hashtable
 			T Find(T x);
+
+			// Obtain the number of items in the hashtable
+			int Length { get; }
 		}
 
 		public class Node<T>
