@@ -7,30 +7,17 @@ namespace CSCI120_5
 {
 
 	class Queue : IQueue, IArrayBased {
-
-		private Node head;
-		private Node tail;
-		private int counter;
-		private int length;
-
-		public Queue()
-		{
-			head = null;
-			tail = null;
-			length = 0;
-			counter = 0;
-		}
-
+		
 		#region IArrayBased implementation
 
 		public void Initialize ()
 		{
-			
+			throw new NotImplementedException ();
 		}
 
 		public void Resize (int n)
 		{
-			
+			throw new NotImplementedException ();
 		}
 
 		#endregion
@@ -40,51 +27,12 @@ namespace CSCI120_5
 
 		public void Enqueue (object x)
 		{
-			// 1. Create a new node for x
-			Node new_guy = new Node(x, null);
-
-			// 2. If tail not null, tail.Next = the new guy
-			if (tail != null) {
-				tail.Next = new_guy;
-			}
-
-			// 3. Move tail to the new guy
-			tail = new_guy;
-
-			// 4. If head is null, point head to the new guy
-			if (head == null) {
-				head = new_guy;
-			}
-
-			// 5. length++
-			length++;
-
-			// 6. counter++
-			counter ++;
+			throw new NotImplementedException ();
 		}
 
 		public object Dequeue ()
 		{
-			// 1. if head is null, exit with a null
-			if (head == null) {
-				return null;
-			} else {
-				// 2. Otherwise, store the head value
-				object ret_val = head.Data;
-			
-				// 3. Move head forward
-				head = head.Next;
-
-				// 4. Counter++
-				counter++;
-
-				// 5. Length--
-				length--;
-
-				// 6. Return stored
-				return ret_val;
-
-			}
+			throw new NotImplementedException ();
 		}
 
 		#endregion
@@ -93,16 +41,18 @@ namespace CSCI120_5
 
 		public void ResetOperations ()
 		{
-			counter = 0;
+			throw new NotImplementedException ();
 		}
 
 		public int Operations {
 			get {
-				return counter;
+				throw new NotImplementedException ();
 			}
 		}
 
 		#endregion
+
+
 
 
 	}
