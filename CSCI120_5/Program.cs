@@ -33,6 +33,7 @@ namespace CSCI120_5
 				int x = gen.Next();
 				queue.Enqueue (x);
 				oQueue.Add (x);
+				Console.WriteLine(queue.Operations);
 			}
 
 			while (oQueue.Count > 0) {
@@ -40,10 +41,12 @@ namespace CSCI120_5
 				int theirs = Convert.ToInt32 (oQueue [0]);
 				TestStatement (mine == theirs, string.Format ("{0}=={1}", mine, theirs), ref score, ref total);
 				oQueue.RemoveAt (0);
+				Console.WriteLine(queue.Operations);
 			}
 
 			TestStatement (total == 22, "Twenty tests were run", ref score, ref total);
-			TestStatement (queue.Operations == 40, "Forty operations were counted.", ref score, ref total); 
+			TestStatement (queue.Operations == 40, "Forty operations were counted.", ref score, ref total);
+			Console.WriteLine(queue.Operations);
 
 			// Put 15 items in the queue
 			for (int i = 0; i < 15; i++)
