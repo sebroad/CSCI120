@@ -6,9 +6,13 @@ namespace CSCI120_6 {
 	
 	public class Deque : IDeque, IArrayBased {
 
+		// Counts operations done
 		private int counter;
+		// Stores the array
 		private object[] data;
+		// Stores the start of the array
 		private int start;
+		// Stores the length of the array
 		private int length;
 
 		public Deque() {
