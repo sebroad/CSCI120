@@ -59,7 +59,6 @@ namespace CSCI120_6
 
 			// Each addition and removal should take one operation, hence 40 total
 			TestStatement(deque.Operations == 40, "Forty operations", ref score, ref total);
-
 		}
 	}
 }
