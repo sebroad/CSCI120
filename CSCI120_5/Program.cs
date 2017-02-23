@@ -7,17 +7,33 @@ namespace CSCI120_5
 {
 
 	class Queue : IQueue, IArrayBased {
+
+		private int length; //how long is the used portion of the array
+		private object[] data; //the array
+		private int counter;  //how many operations have we done
 		
 		#region IArrayBased implementation
 
 		public void Initialize ()
 		{
-			throw new NotImplementedException ();
+			length = 0;
+			counter = 0;
+			data = new object[10];
 		}
 
 		public void Resize (int n)
 		{
-			throw new NotImplementedException ();
+			if (n < 1)
+				return;
+			n = Math.Max(length, n);
+			object[] new_data = new object[n];
+			for (int idx = 0; idx < length; idx++)
+			{
+				counter++;
+				new_data[idx] = data[idx];
+			}
+
+			data = new_data;
 		}
 
 		#endregion
@@ -41,12 +57,15 @@ namespace CSCI120_5
 
 		public void ResetOperations ()
 		{
-			throw new NotImplementedException ();
+			counter = 0;
 		}
 
 		public int Operations {
 			get {
-				throw new NotImplementedException ();
+				get
+				{
+					return counter;
+				}
 			}
 		}
 
