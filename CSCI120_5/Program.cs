@@ -8,7 +8,9 @@ namespace CSCI120_5
 
 	class Queue : IQueue, IArrayBased {
 
+		private int beginning; //where the beginning of the list is
 		private int length; //how long is the used portion of the array
+		private object temp; //temporary variable
 		private object[] data; //the array
 		private int counter;  //how many operations have we done
 		
@@ -16,6 +18,7 @@ namespace CSCI120_5
 
 		public void Initialize ()
 		{
+			beginning = 0;
 			length = 0;
 			counter = 0;
 			data = new object[10];
@@ -43,12 +46,22 @@ namespace CSCI120_5
 
 		public void Enqueue (object x)
 		{
-			throw new NotImplementedException ();
+			length++;
+			data [length - 1] = x;
+			counter++;
 		}
 
 		public object Dequeue ()
 		{
-			throw new NotImplementedException ();
+			if (length > 0) {
+				temp = data [beginning];
+				beginning++;
+				length--;
+				counter++;
+				return temp;
+			}
+
+			return null;
 		}
 
 		#endregion
@@ -62,10 +75,7 @@ namespace CSCI120_5
 
 		public int Operations {
 			get {
-				get
-				{
-					return counter;
-				}
+				return counter;
 			}
 		}
 
