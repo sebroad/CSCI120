@@ -6,10 +6,107 @@ using System.Collections;
 namespace CSCI120_6
 {
 
-	/***
-	 * Define the Deque class by implementing the 
-	 * IDeque and IArrayBased interfaces.
-	 **/
+	class Queue : IDeque, IArrayBased {
+
+		private int beginning; //where the beginning of the list is
+		private int end; //where the end of the list is
+		private int length; //how long is the used portion of the array
+		private object temp; //temporary variable
+		private object[] data; //the array
+		private int counter;  //how many operations have we done
+		
+		#region IArrayBased implementation
+
+		public void Initialize ()
+		{
+			beginning = 0;
+			end = 0;
+			length = 0;
+			counter = 0;
+			data = new object[10];
+		}
+
+		public void Resize (int n)
+		{
+			if (n < 1)
+				return;
+			n = Math.Max(length, n);
+			object[] new_data = new object[n];
+			for (int idx = 0; idx < length; idx++)
+			{
+				counter++;
+				new_data[idx] = data[idx];
+			}
+
+			data = new_data;
+		}
+
+		#endregion
+
+		#region IDeque implementation
+
+		public void AddLast (object x)
+		{
+			length++;
+			data [(length-1)] = x;
+			counter++;
+		}
+
+		public void AddFirst (object x)
+		{
+			if (length == 0) {
+				data [beginning] = x;
+				counter++;
+			} else {
+				beginning--;
+				data [beginning] = x;
+				counter;
+			}
+		}
+
+		public object RemoveLast ()
+		{
+			if (length == 0) {
+				return null;
+			} else {
+				end--;
+				counter++;
+				return end;
+			}
+		}
+
+		public object RemoveFirst ()
+		{
+			if (length == 0) {
+				return null;
+			} else {
+				temp = data [beginning];
+				beginning++;
+				length--;
+				counter++;
+				return temp;
+			}
+		}
+
+		#endregion
+
+		#region IOperationCounter implementation
+
+		public void ResetOperations ()
+		{
+			counter = 0;
+		}
+
+		public int Operations {
+			get {
+				return counter;
+			}
+		}
+
+		#endregion
+
+	}
+
 	class Lab6 : TestClass
 	{
 		public static void Main (string[] args)

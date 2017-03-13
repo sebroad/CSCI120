@@ -47,21 +47,21 @@ namespace CSCI120_5
 		public void Enqueue (object x)
 		{
 			length++;
-			data [length - 1] = x;
+			data [(length-1)] = x;
 			counter++;
 		}
 
 		public object Dequeue ()
 		{
-			if (length > 0) {
+			if (length == 0) {
+				return null;
+			} else {
 				temp = data [beginning];
 				beginning++;
 				length--;
 				counter++;
 				return temp;
 			}
-
-			return null;
 		}
 
 		#endregion
