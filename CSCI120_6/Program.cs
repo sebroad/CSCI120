@@ -60,7 +60,8 @@ namespace CSCI120_6
 			} else {
 				beginning--;
 				data [beginning] = x;
-				counter;
+				counter++
+				;
 			}
 		}
 
