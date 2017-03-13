@@ -6,6 +6,7 @@ using CSCI120.Untyped;
 namespace CSCI120_4
 {
 
+
 	/***
 	 * Students will implement the Untyped.IStack interface in a
 	 * class called Stack in the CSCI120_4 namespace.
@@ -48,7 +49,7 @@ namespace CSCI120_4
 			}
 				
 			TestStatement (total == 22, "Twenty tests were run", ref score, ref total);
-			TestStatement (stack.Operations == 60, "Sixty operations were counted.", ref score, ref total); 
+			TestStatement (stack.Operations == 80, "Eighty operations were counted.", ref score, ref total); 
 
 			// Put 30 items in the 
 			for (int i = 0; i < 15; i++)
