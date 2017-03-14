@@ -7,34 +7,43 @@ namespace CSCI120_9
 {
 	class Stack<T> : IStack<T>
 	{
+		private Node<T> head = null;
+		private int length = 0;
+		private int counter = 0;
+
 		#region IStack implementation
 		public void Push (T x)
 		{
-			throw new NotImplementedException ();
+			head = new Node<T>(x, head);
+			length++;
+			counter++;
 		}
 		public void Pop ()
 		{
-			throw new NotImplementedException ();
+			head = head.Next;
+			length--;
+			counter++;
 		}
 		public bool IsEmpty {
 			get {
-				throw new NotImplementedException ();
+				return (head == null);
 			}
-		}
+		} 
 		public T Top {
 			get {
-				throw new NotImplementedException ();
+				counter++;
+				return head.Data;
 			}
 		}
 		#endregion
 		#region IOperationCounter implementation
 		public void ResetOperations ()
 		{
-			throw new NotImplementedException ();
+			counter = 0;
 		}
 		public int Operations {
 			get {
-				throw new NotImplementedException ();
+				return counter;
 			}
 		}
 		#endregion
