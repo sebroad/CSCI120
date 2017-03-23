@@ -7,16 +7,54 @@ namespace CSCI120_10
 
 	class LinearHashTable<T> : IHashtable<T>
 	{
+		private T[] data = new T[100];
+		private bool[] filled_data = new bool[100];
+		private bool[] del_data = new bool[100];
+		private int length = 0;
+		private int counter = 0;
+
 		#region IHashtable implementation
 
 		public int Hash (T x)
 		{
-			throw new NotImplementedException ();
+			return x.GetHashCode() % data.Length;
 		}
 
+		public int Length
+		{
+			get
+			{
+				return length; 
+			}
+		}
+		
 		public void Add (T x)
 		{
-			throw new NotImplementedException ();
+			// 0. resize if needed
+			if (length >= data.Length)
+				Resize(10 * data.Length);
+
+			// 1. Hash the new item
+			int hash = Hash(x);
+
+			for (int shift = 0; shift < data.Length; shift++)
+			{
+				int pos = (hash + shift) % data.Length; // 4. modulus shift
+				counter++; // about to examine the array
+
+				// 2. check for collisions
+				if (!filled_data[pos] || del_data[pos])
+				{
+					// 3. find an available spot
+					data[pos] = x;
+					filled_data[pos] = true;
+					del_data[pos] = false;
+					break;
+				}
+			}
+
+			// 5. Add to length
+			length++;
 		}
 
 		public void Remove (T x)
