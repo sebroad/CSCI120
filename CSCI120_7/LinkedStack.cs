@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using CSCI120;
 using CSCI120.Untyped;
@@ -52,3 +53,17 @@ namespace CSCI120_7 {
 		}
 	}
 }
+=======
+﻿using System;
+
+namespace CSCI120_7
+{
+	public class LinkedStack
+	{
+		public LinkedStack ()
+		{
+		}
+	}
+}
+
+>>>>>>> refs/remotes/origin/master

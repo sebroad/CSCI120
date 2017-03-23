@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{A5AFC9A4-9606-42F6-8860-99EA352CDCF1}</ProjectGuid>
+    <ProjectGuid>{B6124EC4-31B0-4F12-9EE6-58D4CAC7CE9E}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CSCI120_10</RootNamespace>
-    <AssemblyName>CSCI120_10</AssemblyName>
+    <RootNamespace>CSCI120_11</RootNamespace>
+    <AssemblyName>CSCI120_11</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -17,13 +17,8 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-<<<<<<< HEAD
     <Externalconsole>true</Externalconsole>
     <PlatformTarget>x86</PlatformTarget>
-=======
-    <PlatformTarget>x86</PlatformTarget>
-    <ConsolePause>false</ConsolePause>
->>>>>>> refs/remotes/origin/master
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>full</DebugType>

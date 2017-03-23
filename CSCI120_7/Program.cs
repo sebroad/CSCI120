@@ -17,6 +17,7 @@ namespace CSCI120_7 {
 			(new Lab7()).Exec("Singly linked list IList");
 		}
 
+<<<<<<< HEAD
 		public override void RunTests(ref int score, ref int total) {
 			// Comparison objects
 			ArrayList oStack = new ArrayList();
@@ -54,13 +55,59 @@ namespace CSCI120_7 {
 
 			for (int i = 0; i < 85; i++)
 				stack.Push(gen.Next());
+=======
+		public override void RunTests (ref int score, ref int total)
+		{
+			// Comparison objects
+			ArrayList oStack = new ArrayList ();
+			Random gen = new Random ();
+
+			// Test object
+			CSCI120.Untyped.IStack stack = null;
+			stack = (CSCI120.Untyped.IStack)(Activator.CreateInstanceFrom ("CSCI120_7.exe", "CSCI120_7.LinkedList").Unwrap());
+			TestStatement (stack != null, "Created an Stack object", ref score, ref total);
+
+			TestStatement (stack.Top == null, "Empty stack", ref score, ref total);
+
+			for (int i = 0; i < 20; i++) {
+				int x = gen.Next();
+				stack.Push (x);
+				oStack.Add (x);
+			}
+
+			while (stack.Top != null) {
+				int mine = Convert.ToInt32 (stack.Top);
+				int theirs = Convert.ToInt32 (oStack [oStack.Count - 1]);
+				TestStatement (mine == theirs, string.Format ("{0}=={1}", mine, theirs), ref score, ref total);
+				stack.Pop ();
+				oStack.RemoveAt (oStack.Count - 1);
+			}
+
+			TestStatement (total == 22, "Twenty tests were run", ref score, ref total);
+			TestStatement (stack.Operations == 80, "Eighty operations were counted.", ref score, ref total); 
+
+			// Put 30 items in the 
+			for (int i = 0; i < 15; i++)
+				stack.Push (gen.Next ());
+
+			stack.ResetOperations ();
+
+			for (int i = 0; i < 85; i++)
+				stack.Push (gen.Next ());
+>>>>>>> refs/remotes/origin/master
 
 			int capacity = 0;
 			while (stack.Top != null) {
 				capacity++;
+<<<<<<< HEAD
 				stack.Pop();
 			}
 			TestStatement(capacity == 100, "Stack has capacity for 100 items", ref score, ref total);
+=======
+				stack.Pop ();
+			}
+			TestStatement (capacity == 100, "Stack has capacity for 100 items", ref score, ref total);
+>>>>>>> refs/remotes/origin/master
 
 		}
 	}

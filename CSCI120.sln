@@ -23,6 +23,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSCI120_9", "CSCI120_9\CSCI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSCI120_10", "CSCI120_10\CSCI120_10.csproj", "{A5AFC9A4-9606-42F6-8860-99EA352CDCF1}"
 EndProject
+<<<<<<< HEAD
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSCI120_11", "CSCI120_11\CSCI120_11.csproj", "{B6124EC4-31B0-4F12-9EE6-58D4CAC7CE9E}"
+EndProject
+>>>>>>> refs/remotes/origin/master
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -73,5 +78,9 @@ Global
 		{FF2761FD-4241-413A-9DDF-27F55C0EEE88}.Debug|x86.Build.0 = Debug|x86
 		{FF2761FD-4241-413A-9DDF-27F55C0EEE88}.Release|x86.ActiveCfg = Release|x86
 		{FF2761FD-4241-413A-9DDF-27F55C0EEE88}.Release|x86.Build.0 = Release|x86
+		{B6124EC4-31B0-4F12-9EE6-58D4CAC7CE9E}.Debug|x86.ActiveCfg = Debug|x86
+		{B6124EC4-31B0-4F12-9EE6-58D4CAC7CE9E}.Debug|x86.Build.0 = Debug|x86
+		{B6124EC4-31B0-4F12-9EE6-58D4CAC7CE9E}.Release|x86.ActiveCfg = Release|x86
+		{B6124EC4-31B0-4F12-9EE6-58D4CAC7CE9E}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 EndGlobal
