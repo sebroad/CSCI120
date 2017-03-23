@@ -9,7 +9,6 @@ namespace CSCI120_11
 	{
 		private int counter = 0;
 
-		public delegate object TreeNodeAction<T>(TreeNode<T> node, object val);
 		public void Insert (ref TreeNode<T> root, T x, int path)
 		{
 			TreeNode<T> parent = null;
@@ -64,7 +63,7 @@ namespace CSCI120_11
 			throw new NotImplementedException ();
 		}
 
-		public void Traverse(TreeNode<T> Root, TreeNodeAction<T> Action)
+		public void Traverse(TreeNode<T> Root)
 		{
 			throw new NotImplementedException ();
 		}
@@ -113,8 +112,6 @@ namespace CSCI120_11
 			foreach (object x in list) {
 				TestStatement(tree.Find(root, x) != null, string.Format("Found {0}", x), ref score, ref total);
 			}
-
-			tree.Traverse(root, (TreeNode<object> node, object val) => { Console.WriteLine(node.Data); return val; });
 		}
 	}
 }
