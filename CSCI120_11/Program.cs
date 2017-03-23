@@ -8,8 +8,8 @@ namespace CSCI120_11
 	class BinaryTree<T> : IOperationCounter
 	{
 		private int counter = 0;
-		public delegate void TreeNodeAction();
 
+		public delegate object TreeNodeAction<T>(TreeNode<T> node, object val);
 		public void Insert (ref TreeNode<T> root, T x, int path)
 		{
 			TreeNode<T> parent = null;
@@ -56,12 +56,12 @@ namespace CSCI120_11
 			throw new NotImplementedException ();
 		}
 
-		public TreeNode<T> Find(TreeNode<T> root)
+		public TreeNode<T> Find(TreeNode<T> root, T x)
 		{
 			throw new NotImplementedException ();
 		}
 
-		public void Traverse(TreeNode<T> Root, TreeNodeAction Action)
+		public void Traverse(TreeNode<T> Root, TreeNodeAction<T> Action)
 		{
 			throw new NotImplementedException ();
 		}
@@ -88,20 +88,30 @@ namespace CSCI120_11
 
 		}
 
+
 		public override void RunTests (ref int score, ref int total)
 		{
 			BinaryTree<object> tree = new BinaryTree<object> ();
+			System.Collections.ArrayList list = new System.Collections.ArrayList();
 			TreeNode<object> root = null;
 
 			Random gen = new Random ();
-			for (int idx = 0; idx < 5; idx++) {
+			for (int idx = 0; idx < 20; idx++) {
 				object x = gen.Next ();
+				list.Add(x);
 				int path = gen.Next ();
 				tree.Insert (ref root, x, path);
 			}
 
-			TestStatement (tree.Count (root) == 5, "All inserted", ref score, ref total);
+			TestStatement(tree.Count (root) == 20, "All inserted", ref score, ref total);
+			TestStatement(tree.Depth (root) >= 5, "Depth at least 5", ref score, ref total);
+			TestStatement(tree.Depth(root) <= 8, "Should be less than 8", ref score, ref total);
 
+			foreach (object x in list) {
+				TestStatement(tree.Find(root, x) != null, string.Format("Found {0}", x), ref score, ref total);
+			}
+
+			tree.Traverse(root, (TreeNode<object> node, object val) => { Console.WriteLine(node.Data); return val; });
 		}
 	}
 }
