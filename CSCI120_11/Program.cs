@@ -53,7 +53,10 @@ namespace CSCI120_11
 		
 		public int Count(TreeNode<T> root)
 		{
-			throw new NotImplementedException ();
+			if (root == null) {
+				return 0;
+			} else {
+				return 1 + Count (root.Left) + Count (root.Right);
 		}
 
 		public TreeNode<T> Find(TreeNode<T> root, T x)
