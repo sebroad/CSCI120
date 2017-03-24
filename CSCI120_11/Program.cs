@@ -2,6 +2,8 @@
 using CSCI120;
 using CSCI120.Generic;
 
+// Depth first traversal
+
 namespace CSCI120_11
 {
 
@@ -9,7 +11,6 @@ namespace CSCI120_11
 	{
 		private int counter = 0;
 
-		public delegate object TreeNodeAction<T>(TreeNode<T> node, object val);
 		public void Insert (ref TreeNode<T> root, T x, int path)
 		{
 			TreeNode<T> parent = null;
@@ -48,20 +49,42 @@ namespace CSCI120_11
 			
 		public int Depth(TreeNode<T> root)
 		{
-			throw new NotImplementedException ();
+			if (root == null) {
+				return 0;
+			} else {
+				return 1 + Math.Max(Depth(root.Left), Depth (root.Right));
+			}
 		}
 		
 		public int Count(TreeNode<T> root)
 		{
-			throw new NotImplementedException ();
+			if (root == null) {
+				return 0;
+			} else {
+				return 1 + Count (root.Left) + Count (root.Right);
+			}
 		}
 
 		public TreeNode<T> Find(TreeNode<T> root, T x)
 		{
-			throw new NotImplementedException ();
+			if (root == null) { // Base Case A: We're out of tree
+				return null;
+			} 
+			else if (root.Data.Equals (x)) { // Base Case B: We found it!
+				return root;
+			}
+
+			// Smaller Caller A: Look left
+			TreeNode<T> left = Find (root.Left, x);
+			if (left == null) {
+				// Smaller Caller B: look right
+				return Find(root.Right, x);
+			} else {
+				return left;
+			}
 		}
 
-		public void Traverse(TreeNode<T> Root, TreeNodeAction<T> Action)
+		public void Traverse(TreeNode<T> Root)
 		{
 			throw new NotImplementedException ();
 		}
@@ -110,8 +133,6 @@ namespace CSCI120_11
 			foreach (object x in list) {
 				TestStatement(tree.Find(root, x) != null, string.Format("Found {0}", x), ref score, ref total);
 			}
-
-			tree.Traverse(root, (TreeNode<object> node, object val) => { Console.WriteLine(node.Data); return val; });
 		}
 	}
 }
