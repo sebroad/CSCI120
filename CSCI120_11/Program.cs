@@ -5,6 +5,8 @@ using CSCI120.Generic;
 namespace CSCI120_11
 {
 
+	delegate object TreeNodeAction<T>(TreeNode<T> node, object val);
+
 	class BinaryTree<T> : IOperationCounter
 	{
 		private int counter = 0;
