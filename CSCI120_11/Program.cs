@@ -47,7 +47,11 @@ namespace CSCI120_11
 			
 		public int Depth(TreeNode<T> root)
 		{
-			throw new NotImplementedException ();
+			if (root == null) {
+				return 0;
+			} else {
+				return 1 + Math.Max (Depth (root.Left), Depth (root.Right));
+			}
 		}
 		
 		public int Count(TreeNode<T> root)
@@ -56,11 +60,27 @@ namespace CSCI120_11
 				return 0;
 			} else {
 				return 1 + Count (root.Left) + Count (root.Right);
+			}
 		}
 
 		public TreeNode<T> Find(TreeNode<T> root, T x)
 		{
-			throw new NotImplementedException ();
+			if (root == null) { // Base Case A: We're out of tree
+				return null;
+			}
+			else if (root.Data.Equals (x)) { // Base Case B: We found it!
+				return root;
+			}
+
+			// Smaller Caller A: Look left
+			TreeNode<T> left = Find (root.Left, x);
+			if (left == null) {
+				// Smaller Caller B: Look right
+				return Find (root.Right, x);
+			}
+			else {
+				return left;
+			}
 		}
 
 		public void Traverse(TreeNode<T> Root)
@@ -98,7 +118,8 @@ namespace CSCI120_11
 			TreeNode<object> root = null;
 
 			Random gen = new Random ();
-			for (int idx = 0; idx < 20; idx++) {
+			for (int idx = 0; idx < 20;
+				idx++) {
 				object x = gen.Next ();
 				list.Add(x);
 				int path = gen.Next ();
@@ -107,7 +128,7 @@ namespace CSCI120_11
 
 			TestStatement(tree.Count (root) == 20, "All inserted", ref score, ref total);
 			TestStatement(tree.Depth (root) >= 5, "Depth at least 5", ref score, ref total);
-			TestStatement(tree.Depth(root) <= 8, "Should be less than 8", ref score, ref total);
+			TestStatement(tree.Depth(root) <= 8, "Should be at most 8", ref score, ref total);
 
 			foreach (object x in list) {
 				TestStatement(tree.Find(root, x) != null, string.Format("Found {0}", x), ref score, ref total);
