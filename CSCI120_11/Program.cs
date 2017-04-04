@@ -91,7 +91,7 @@ namespace CSCI120_11
 			{
 				val = Action (Root, val);
 				Traverse (Root.Left, Action, ref val);
-				Traverse (Root.Right, Action ref val);
+				Traverse (Root.Right, Action, ref val);
 			}
 		}
 
