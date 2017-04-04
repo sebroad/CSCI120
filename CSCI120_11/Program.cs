@@ -85,9 +85,14 @@ namespace CSCI120_11
 			}
 		}
 
-		public void Traverse(TreeNode<T> Root)
+		public void Traverse(TreeNode<T> Root, TreeNodeAction<T> Action, ref object val)
 		{
-			throw new NotImplementedException ();
+			if (Root != null) 
+			{
+				val = Action (Root, val);
+				Traverse (Root.Left, Action, ref val);
+				Traverse (Root.Right, Action ref val);
+			}
 		}
 
 		#region IOperationCounter implementation
