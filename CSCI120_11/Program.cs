@@ -127,7 +127,7 @@ namespace CSCI120_11
 			Random gen = new Random ();
 			for (int idx = 0; idx < 20;
 				idx++) {
-				object x = gen.Next ();
+				object x = gen.Next (1000);
 				list.Add(x);
 				int path = gen.Next ();
 				tree.Insert (ref root, x, path);
@@ -140,6 +140,37 @@ namespace CSCI120_11
 			foreach (object x in list) {
 				TestStatement(tree.Find(root, x) != null, string.Format("Found {0}", x), ref score, ref total);
 			}
+
+			object sum = 0;
+			tree.Traverse(root, Sum, ref sum);
+			Console.WriteLine ("The total is {0}.", sum);
+
+			sum = 0;
+			tree.Traverse(root, Print, ref sum);
+			Console.WriteLine ("The total is {0}.", sum);
+
+			object max = 0;
+			tree.Traverse(root, Maximum, ref max);
+
+			Console.WriteLine ("The max is {0}.", max);
+
 		}
+
+		public object Sum(TreeNode<object> root, object val)
+		{
+			return Convert.ToInt32(root.Data) + Convert.ToInt32(val);
+		}
+
+		public object Print(TreeNode<object> root, object val)
+		{
+			Console.WriteLine (root.Data);
+			return val;
+		}
+
+		public object Maximum(TreeNode<object> root, object val)
+		{
+			return Math.Max (Convert.ToInt32 (root.Data), Convert.ToInt32 (val));
+		}
+
 	}
 }
