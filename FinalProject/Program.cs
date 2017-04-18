@@ -1,8 +1,11 @@
 ﻿using System;
+using CSCI120;
+using CSCI120.Untyped;
 
 namespace FinalProject
 {
 	class Queue : IQueue, IArrayBased
+
 	{
 
 		private int beginning; //where the beginning of the list is
@@ -83,3 +86,4 @@ namespace FinalProject
 
 		#endregion
 	}
+}
