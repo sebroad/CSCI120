@@ -32,8 +32,8 @@ namespace FinalProject
 			object[] new_data = new object[n];
 			for (int idx = 0; idx < length; idx++)
 			{
-			counter++;
-			new_data[idx] = data[idx];
+				counter++;
+				new_data[idx] = data[idx];
 			}
 
 			data = new_data;
@@ -83,7 +83,15 @@ namespace FinalProject
 				return counter;
 			}
 		}
+	}
 
-		#endregion
+	class FinalProject
+	{
+		public static void Main(string[] args)
+		{
+			Console.WriteLine("Hello World!");
+			Console.ReadKey();
+		}
 	}
 }
+#endregion
