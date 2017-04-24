@@ -1,6 +1,7 @@
 ﻿using System;
 using CSCI120;
 using CSCI120.Untyped;
+using System.IO;
 
 namespace FinalProject
 {
@@ -85,13 +86,45 @@ namespace FinalProject
 		}
 	}
 
-	class FinalProject
+
+#endregion
+
+
+namespace CSVIO
+{
+	class Entry
 	{
-		public static void Main(string[] args)
+		private string name;
+		private string value;
+		public Entry(string Name, string Value)
 		{
-			Console.WriteLine("Hello World!");
-			Console.ReadKey();
+			name = Name;
+			value = Value;
+		}
+
+		public override string ToString()
+		{
+			return string.Format("[Pair {0}, {1}]", name, value);
+		}
+	}
+
+	class MainClass
+	{
+			public static void Main(string[] args)
+			{
+				using (StreamReader rdr = new StreamReader("../../Pokedex.csv"))
+				{
+					rdr.ReadLine(); // skip column headers
+					while (!rdr.EndOfStream)
+					{
+						string line = rdr.ReadLine();
+						string[] fields = line.Split(',');
+
+						Console.WriteLine(new Entry(fields[0], fields[1]));
+					}
+				}
+			}
 		}
 	}
 }
-#endregion
+

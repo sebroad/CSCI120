@@ -42,4 +42,7 @@
       <Name>CSCI120</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="PokeDex.csv" />
+  </ItemGroup>
 </Project>
