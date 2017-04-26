@@ -122,12 +122,12 @@ namespace FinalProject
 			number = Number;
 			name = Name;
 			type1 = Type1;
-			type2 = Type2
+			type2 = Type2;
 		}
 
 		public override string ToString()
 		{
-			return string.Format("\nIndex: {0}\nName: {1}\nType 1:{2}\n Type 2: {3}\n", number, name, type1, type2);
+			return string.Format("\nIndex: {0}\nName: {1}\nType 1:{2}\nType 2:{3}\n", number, name, type1, type2);
 		}
 	}
 
