@@ -32,7 +32,8 @@ namespace FinalProject
 
 		public void Add(int i, object x)
 		{
-						//resize
+			//resize
+
 			if (length == pokedex.Length) {
                 Resize(2 * pokedex.Length);
 			}
@@ -94,6 +95,9 @@ namespace FinalProject
 			length = 0;
 			counter = 0;
 			pokedex = new object[151];
+
+			pokedex [0] = 0;
+			length++;
 		}
 
 		public void Resize(int n)
@@ -139,6 +143,19 @@ namespace FinalProject
 			int userInt = 0;
 			int x = 0;
 			Pokemon pokemon = new Pokemon();
+			pokemon.Initialize ();
+
+			using (StreamReader rdr = new StreamReader("../../Pokedex.txt"))
+			{
+				rdr.ReadLine(); // skip column headers
+				while (!rdr.EndOfStream)
+				{
+					string line = rdr.ReadLine();
+					string[] fields = line.Split(',');
+
+					pokemon.Add (pokemon.Length, fields [0]);
+				}
+			}
 
 			while (user.ToLower() != "quit")
 			{
@@ -158,7 +175,7 @@ namespace FinalProject
 					}
 				}
 
-				using (StreamReader rdr = new StreamReader("../../Pokedex.txt"))
+				/*using (StreamReader rdr = new StreamReader("../../Pokedex.txt"))
 				{
 					rdr.ReadLine(); // skip column headers
 					while (!rdr.EndOfStream)
@@ -171,7 +188,7 @@ namespace FinalProject
 							Console.WriteLine(new Pair(fields[0], fields[1], fields[2], fields[3]));
 						}
 					}
-				}
+				}*/
 
 				Convert.ToString (user);
 			}
