@@ -91,18 +91,19 @@ namespace FinalProject
 
 	class Pair
 	{
-		private int number;
+		private string number;
 		private string name;
 		private string type;
-		public Pair(string Name, string Value)
+		public Pair(string Number, string Name, string Type)
 		{
+			number = Number;
 			name = Name;
-			value = Value;
+			type = Type;
 		}
 
 		public override string ToString()
 		{
-			return string.Format("[Pair {0}, {1}]", name, value);
+			return string.Format("Entry {0}, {1}, {2}", number, name, type);
 		}
 	}
 
@@ -118,7 +119,7 @@ namespace FinalProject
 					string line = rdr.ReadLine();
 					string[] fields = line.Split(',');
 
-					Console.WriteLine(new Pair(fields[0], fields[1]));
+					Console.WriteLine(new Pair(fields[0], fields[1], fields[2]));
 					Console.ReadKey();
 				}
 			}

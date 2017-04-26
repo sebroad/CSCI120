@@ -20,8 +20,8 @@
 19,	Rattata,	Normal
 20,	Raticate,	Normal
 21,	Spearow,	Normal
-22,	Fearow	Normal
-23,	Ekans	Poison
+22,	Fearow,	Normal
+23,	Ekans,	Poison
 24,	Arbok,	Poison
 25,	Pikachu,	Electric
 26,	Raichu,	Electric
