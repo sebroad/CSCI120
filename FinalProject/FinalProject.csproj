@@ -43,6 +43,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="PokeDex.csv" />
+    <None Include="Pokedex.txt" />
   </ItemGroup>
 </Project>

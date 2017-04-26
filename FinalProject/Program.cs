@@ -87,16 +87,14 @@ namespace FinalProject
 	}
 
 
-#endregion
+	#endregion
 
-
-namespace CSVIO
-{
-	class Entry
+	class Pair
 	{
+		private int number;
 		private string name;
-		private string value;
-		public Entry(string Name, string Value)
+		private string type;
+		public Pair(string Name, string Value)
 		{
 			name = Name;
 			value = Value;
@@ -110,21 +108,20 @@ namespace CSVIO
 
 	class MainClass
 	{
-			public static void Main(string[] args)
+		public static void Main(string[] args)
+		{
+			using (StreamReader rdr = new StreamReader("../../Pokedex.txt"))
 			{
-				using (StreamReader rdr = new StreamReader("../../Pokedex.csv"))
+				rdr.ReadLine(); // skip column headers
+				while (!rdr.EndOfStream)
 				{
-					rdr.ReadLine(); // skip column headers
-					while (!rdr.EndOfStream)
-					{
-						string line = rdr.ReadLine();
-						string[] fields = line.Split(',');
+					string line = rdr.ReadLine();
+					string[] fields = line.Split(',');
 
-						Console.WriteLine(new Entry(fields[0], fields[1]));
-					}
+					Console.WriteLine(new Pair(fields[0], fields[1]));
+					Console.ReadKey();
 				}
 			}
 		}
 	}
 }
-
