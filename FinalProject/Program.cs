@@ -115,17 +115,19 @@ namespace FinalProject
 	{
 		private string number;
 		private string name;
-		private string type;
-		public Pair(string Number, string Name, string Type)
+		private string type1;
+		private string type2;
+		public Pair(string Number, string Name, string Type1, string Type2)
 		{
 			number = Number;
 			name = Name;
-			type = Type;
+			type1 = Type1;
+			type2 = Type2
 		}
 
 		public override string ToString()
 		{
-			return string.Format("Entry {0}, {1}, {2}", number, name, type);
+			return string.Format("\nIndex: {0}\nName: {1}\nType 1:{2}\n Type 2: {3}\n", number, name, type1, type2);
 		}
 	}
 
@@ -157,7 +159,7 @@ namespace FinalProject
 					
 						if (fields[0] == user)
 						{
-							Console.WriteLine(new Pair(fields[0], fields[1], fields[2]));
+							Console.WriteLine(new Pair(fields[0], fields[1], fields[2], fields[3]));
 						}
 					}
 				}
