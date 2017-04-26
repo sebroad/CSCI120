@@ -111,18 +111,45 @@ namespace FinalProject
 	{
 		public static void Main(string[] args)
 		{
-			using (StreamReader rdr = new StreamReader("../../Pokedex.txt"))
+			string user = "0";
+
+			while (user.ToLower() != "quit")
 			{
-				rdr.ReadLine(); // skip column headers
-				while (!rdr.EndOfStream)
+				user = "0";
+				Console.Write("Please enter a Pokedex number or enter QUIT to quit: ");
+				user = Console.ReadLine();
+			
+				if (user != "quit")
 				{
+<<<<<<< Updated upstream
 					string line = rdr.ReadLine();
 					string[] fields = line.Split(',');
 					if (fields[0].Length > 0)
 					{
 						Console.WriteLine(new Pair(fields[0], fields[1], fields[2]));
 					}
+=======
+					Convert.ToInt32(user);
+>>>>>>> Stashed changes
 				}
+			
+				using (StreamReader rdr = new StreamReader("../../Pokedex.txt"))
+				{
+					rdr.ReadLine(); // skip column headers
+					while (!rdr.EndOfStream)
+					{
+						string line = rdr.ReadLine();
+						string[] fields = line.Split(',');
+					
+						if (fields[0] == user)
+						{
+							Console.WriteLine(new Pair(fields[0], fields[1], fields[2]));
+							Console.ReadKey();
+						}
+					}
+				}
+
+				Convert.ToString (user);
 			}
 			Console.ReadKey();
 		}
