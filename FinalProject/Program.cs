@@ -2,79 +2,21 @@
 using CSCI120;
 using CSCI120.Untyped;
 using System.IO;
+using System.Collections.Generic;
 
 namespace FinalProject
 {
-	class Queue : IQueue, IArrayBased
-
+	
+	class Pokemon : IList
 	{
-
-		private int beginning; //where the beginning of the list is
-		private int length; //how long is the used portion of the array
-		private object temp; //temporary variable
-		private object[] data; //the array
-		private int counter;  //how many operations have we done
-
-		#region IArrayBased implementation
-
-		public void Initialize()
+		private int length = 0;
+		private int counter = 0;
+		public int Length
 		{
-			beginning = 0;
-			length = 0;
-			counter = 0;
-			data = new object[10];
-		}
-
-		public void Resize(int n)
-		{
-			if (n < 1)
-				return;
-			n = Math.Max(length, n);
-			object[] new_data = new object[n];
-			for (int idx = 0; idx < length; idx++)
+			get
 			{
-				counter++;
-				new_data[idx] = data[idx];
+				return length;
 			}
-
-			data = new_data;
-		}
-
-		#endregion
-
-
-		#region IQueue implementation
-
-		public void Enqueue(object x)
-		{
-			length++;
-			data[(length - 1)] = x;
-			counter++;
-		}
-
-		public object Dequeue()
-		{
-			if (length == 0)
-			{
-				return null;
-			}
-			else
-			{
-				temp = data[beginning];
-				beginning++;
-				length--;
-				counter++;
-				return temp;
-			}
-		}
-
-		#endregion
-
-		#region IOperationCounter implementation
-
-		public void ResetOperations()
-		{
-			counter = 0;
 		}
 
 		public int Operations
@@ -84,11 +26,37 @@ namespace FinalProject
 				return counter;
 			}
 		}
+
+		public void Add(int i, object x)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void Clear()
+		{
+			throw new NotImplementedException();
+		}
+
+		public object Get(int i)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void Remove(int i)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void ResetOperations()
+		{
+			counter = 0;
+		}
+
+		public void Set(int i, object x)
+		{
+			throw new NotImplementedException();
+		}
 	}
-
-
-	#endregion
-
 	class Pair
 	{
 		private string number;
@@ -121,16 +89,8 @@ namespace FinalProject
 			
 				if (user != "quit")
 				{
-<<<<<<< Updated upstream
-					string line = rdr.ReadLine();
-					string[] fields = line.Split(',');
-					if (fields[0].Length > 0)
-					{
-						Console.WriteLine(new Pair(fields[0], fields[1], fields[2]));
-					}
-=======
+
 					Convert.ToInt32(user);
->>>>>>> Stashed changes
 				}
 			
 				using (StreamReader rdr = new StreamReader("../../Pokedex.txt"))
@@ -144,14 +104,12 @@ namespace FinalProject
 						if (fields[0] == user)
 						{
 							Console.WriteLine(new Pair(fields[0], fields[1], fields[2]));
-							Console.ReadKey();
 						}
 					}
 				}
 
 				Convert.ToString (user);
 			}
-			Console.ReadKey();
 		}
 	}
 }
