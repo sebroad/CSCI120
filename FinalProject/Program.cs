@@ -9,14 +9,9 @@ namespace FinalProject
 	
 	class Pokemon : IList , IArrayBased
 	{
-<<<<<<< HEAD
 		private int length;
 		private int counter;
 		private object[] pokedex;
-=======
-		private int length = 0;
-		private int counter = 0;
->>>>>>> origin/Group-B
 
 		public int Length
 		{
@@ -61,12 +56,9 @@ namespace FinalProject
 
 		public object Get(int i)
 		{
-<<<<<<< HEAD
+
 			counter++;
 			return pokedex[i];
-=======
-			return data [i];
->>>>>>> origin/Group-B
 		}
 
 		public void Remove(int i)
@@ -93,7 +85,7 @@ namespace FinalProject
 
 		public void Set(int i, object x)
 		{
-<<<<<<< HEAD
+
 			counter++;
 			pokedex[i] = x;		
 		}
@@ -117,9 +109,6 @@ namespace FinalProject
 			}
 
 			pokedex = new_data;
-=======
-			data[i] = x;
->>>>>>> origin/Group-B
 		}
 	}
 	class Pair
