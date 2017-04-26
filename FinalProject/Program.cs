@@ -11,6 +11,7 @@ namespace FinalProject
 	{
 		private int length = 0;
 		private int counter = 0;
+
 		public int Length
 		{
 			get
@@ -39,7 +40,7 @@ namespace FinalProject
 
 		public object Get(int i)
 		{
-			throw new NotImplementedException();
+			return data [i];
 		}
 
 		public void Remove(int i)
@@ -54,7 +55,7 @@ namespace FinalProject
 
 		public void Set(int i, object x)
 		{
-			throw new NotImplementedException();
+			data[i] = x;
 		}
 	}
 	class Pair
