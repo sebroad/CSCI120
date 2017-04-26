@@ -7,10 +7,12 @@ using System.Collections.Generic;
 namespace FinalProject
 {
 	
-	class Pokemon : IList
+	class Pokemon : IList , IArrayBased
 	{
-		private int length = 0;
-		private int counter = 0;
+		private int length;
+		private int counter;
+		private object[] pokedex;
+
 		public int Length
 		{
 			get
@@ -29,22 +31,50 @@ namespace FinalProject
 
 		public void Add(int i, object x)
 		{
-			throw new NotImplementedException();
+						//resize
+			if (length == pokedex.Length) {
+                Resize(2 * pokedex.Length);
+			}
+			//shift to the right
+			for (int idx = length - 1; idx >= i; idx--)
+			{
+				counter++;
+				pokedex[idx + 1] = pokedex[idx];
+			}
+			//add in the new item
+			Set(i, x);
+
+			//add one to length
+			length++;
+
 		}
 
 		public void Clear()
 		{
-			throw new NotImplementedException();
+			length = 0;
 		}
 
 		public object Get(int i)
 		{
-			throw new NotImplementedException();
+			counter++;
+			return pokedex[i];
 		}
 
 		public void Remove(int i)
 		{
-			throw new NotImplementedException();
+			//shift everything to the left
+			for (int idx = i; idx<length - 1; idx++){
+				counter++;
+				pokedex[idx] = pokedex[idx + 1];
+			}
+
+			//reduce the length of the list by one
+			length--;
+
+			//resize
+			if (pokedex.Length >= 3 * length) { 
+				Resize(2 * length);
+			}		
 		}
 
 		public void ResetOperations()
@@ -54,7 +84,29 @@ namespace FinalProject
 
 		public void Set(int i, object x)
 		{
-			throw new NotImplementedException();
+			counter++;
+			pokedex[i] = x;		
+		}
+
+		public void Initialize()
+		{
+			length = 0;
+			counter = 0;
+			pokedex = new object[151];
+		}
+
+		public void Resize(int n)
+		{
+			if (n < 1)
+				return;
+			n = Math.Max(length, n);
+			object[] new_data = new object[n];
+			for (int idx = 0; idx<length; idx++) {
+				counter++;
+				new_data[idx] = pokedex[idx];
+			}
+
+			pokedex = new_data;
 		}
 	}
 	class Pair
@@ -89,9 +141,9 @@ namespace FinalProject
 			
 				if (user != "quit")
 				{
-
 					Convert.ToInt32(user);
 				}
+
 			
 				using (StreamReader rdr = new StreamReader("../../Pokedex.txt"))
 				{
