@@ -9,7 +9,7 @@ namespace FinalProject
 	
 	class Pokemon : IList , IArrayBased
 	{
-
+		//Declare List Variables
 		private int length;
 		private int counter;
 		private object[] pokedex;
@@ -116,6 +116,7 @@ namespace FinalProject
 	}
 	class Pair
 	{
+		//Constructing a new object
 		private string number;
 		private string name;
 		private string type1;
@@ -128,7 +129,7 @@ namespace FinalProject
 			type1 = Type1;
 			type2 = Type2;
 		}
-
+		// Formatting a string
 		public override string ToString()
 		{
 			return string.Format("\nIndex:\t{0}\nName:\t{1}\nType 1:\t{2}\nType 2:\t{3}\n", number, name, type1, type2);
@@ -139,12 +140,13 @@ namespace FinalProject
 	{
 		public static void Main(string[] args)
 		{
+			//Initialization
 			string user = "0";
 			int userInt = 0;
 			int x = 0;
 			Pokemon pokemon = new Pokemon();
 			pokemon.Initialize ();
-
+			//Constructing a list from a csv file.
 			using (StreamReader rdr = new StreamReader("../../Pokedex.txt"))
 			{
 				rdr.ReadLine(); // skip column headers
@@ -159,6 +161,7 @@ namespace FinalProject
 
 			while (user.ToLower() != "quit")
 			{
+				//asking for user input
 				user = "0";
 				userInt = 0;
 				Console.Write("Please enter a Pokedex number or enter QUIT to quit: ");
@@ -166,6 +169,7 @@ namespace FinalProject
 			
 				if (user.ToLower() != "quit")
 				{
+					//Data
 					if (Int32.TryParse(user, out x)) {
 						userInt = Convert.ToInt32 (user);
 						if (userInt > pokemon.Length || userInt < 1) {
@@ -184,7 +188,7 @@ namespace FinalProject
 						string line = rdr.ReadLine();
 						string[] fields = line.Split(',');
 					
-						if (fields[0] == pokemon.Get(userInt))
+						if (fields[0] == pokemon.Get(userInt).ToString())
 						{
 							Console.WriteLine(new Pair(fields[0], fields[1], fields[2], fields[3]));
 						}
