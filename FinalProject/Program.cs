@@ -12,7 +12,7 @@ namespace FinalProject
 
 		private int length;
 		private int counter;
-		public object[] pokedex;
+		private object[] pokedex;
 
 		public int Length
 		{
