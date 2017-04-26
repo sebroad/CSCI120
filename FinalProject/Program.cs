@@ -160,6 +160,7 @@ namespace FinalProject
 			while (user.ToLower() != "quit")
 			{
 				user = "0";
+				userInt = 0;
 				Console.Write("Please enter a Pokedex number or enter QUIT to quit: ");
 				user = Console.ReadLine();
 			
@@ -167,15 +168,15 @@ namespace FinalProject
 				{
 					if (Int32.TryParse(user, out x)) {
 						userInt = Convert.ToInt32 (user);
-						if (userInt > pokemon.Length) {
-							Console.WriteLine ("Sorry, we could not find that Pokedex number.");
+						if (userInt > pokemon.Length || userInt < 1) {
+							Console.WriteLine ("\nSorry, we could not find that Pokedex number.\n");
 						}
 					} else {
-						Console.WriteLine ("Sorry, we could not find that Pokedex number.");
+						Console.WriteLine ("\nSorry, we could not find that Pokedex number.\n");
 					}
 				}
 
-				/*using (StreamReader rdr = new StreamReader("../../Pokedex.txt"))
+				using (StreamReader rdr = new StreamReader("../../Pokedex.txt"))
 				{
 					rdr.ReadLine(); // skip column headers
 					while (!rdr.EndOfStream)
@@ -183,12 +184,14 @@ namespace FinalProject
 						string line = rdr.ReadLine();
 						string[] fields = line.Split(',');
 					
-						if (fields[0] == user)
+						if (fields[0] == pokemon.Get(userInt))
 						{
 							Console.WriteLine(new Pair(fields[0], fields[1], fields[2], fields[3]));
 						}
 					}
-				}*/
+				}
+
+
 
 				Convert.ToString (user);
 			}
