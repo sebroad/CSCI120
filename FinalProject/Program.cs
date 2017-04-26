@@ -118,11 +118,13 @@ namespace FinalProject
 				{
 					string line = rdr.ReadLine();
 					string[] fields = line.Split(',');
-
-					Console.WriteLine(new Pair(fields[0], fields[1], fields[2]));
-					Console.ReadKey();
+					if (fields[0].Length > 0)
+					{
+						Console.WriteLine(new Pair(fields[0], fields[1], fields[2]));
+					}
 				}
 			}
+			Console.ReadKey();
 		}
 	}
 }
