@@ -9,9 +9,10 @@ namespace FinalProject
 	
 	class Pokemon : IList , IArrayBased
 	{
+
 		private int length;
 		private int counter;
-		private object[] pokedex;
+		public object[] pokedex;
 
 		public int Length
 		{
@@ -56,7 +57,6 @@ namespace FinalProject
 
 		public object Get(int i)
 		{
-
 			counter++;
 			return pokedex[i];
 		}
@@ -85,7 +85,6 @@ namespace FinalProject
 
 		public void Set(int i, object x)
 		{
-
 			counter++;
 			pokedex[i] = x;		
 		}
@@ -117,6 +116,7 @@ namespace FinalProject
 		private string name;
 		private string type1;
 		private string type2;
+
 		public Pair(string Number, string Name, string Type1, string Type2)
 		{
 			number = Number;
@@ -127,7 +127,7 @@ namespace FinalProject
 
 		public override string ToString()
 		{
-			return string.Format("\nIndex: {0}\nName: {1}\nType 1:{2}\nType 2:{3}\n", number, name, type1, type2);
+			return string.Format("\nIndex:\t{0}\nName:\t{1}\nType 1:\t{2}\nType 2:\t{3}\n", number, name, type1, type2);
 		}
 	}
 
@@ -136,6 +136,9 @@ namespace FinalProject
 		public static void Main(string[] args)
 		{
 			string user = "0";
+			int userInt = 0;
+			int x = 0;
+			Pokemon pokemon = new Pokemon();
 
 			while (user.ToLower() != "quit")
 			{
@@ -143,12 +146,18 @@ namespace FinalProject
 				Console.Write("Please enter a Pokedex number or enter QUIT to quit: ");
 				user = Console.ReadLine();
 			
-				if (user != "quit")
+				if (user.ToLower() != "quit")
 				{
-					Convert.ToInt32(user);
+					if (Int32.TryParse(user, out x)) {
+						userInt = Convert.ToInt32 (user);
+						if (userInt > pokemon.Length) {
+							Console.WriteLine ("Sorry, we could not find that Pokedex number.");
+						}
+					} else {
+						Console.WriteLine ("Sorry, we could not find that Pokedex number.");
+					}
 				}
 
-			
 				using (StreamReader rdr = new StreamReader("../../Pokedex.txt"))
 				{
 					rdr.ReadLine(); // skip column headers
