@@ -164,7 +164,7 @@ namespace FinalProject
 				//asking for user input
 				user = "0";
 				userInt = 0;
-				Console.Write("Please enter a Pokedex number or enter QUIT to quit: ");
+				Console.Write("Welcome to your PokeDex.\nPlease enter a Pokedex number or enter QUIT to quit: ");
 				user = Console.ReadLine();
 			
 				if (user.ToLower() != "quit")
