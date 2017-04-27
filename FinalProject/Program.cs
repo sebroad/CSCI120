@@ -59,6 +59,7 @@ namespace FinalProject
 		public object Get(int i)
 		{
 			counter++;
+
 			return pokedex[i];
 		}
 
@@ -174,28 +175,26 @@ namespace FinalProject
 						userInt = Convert.ToInt32 (user);
 						if (userInt > pokemon.Length || userInt < 1) {
 							Console.WriteLine ("\nSorry, we could not find that Pokedex number.\n");
+						} else {
+							using (StreamReader rdr = new StreamReader("../../Pokedex.txt"))
+							{
+								rdr.ReadLine(); // skip column headers
+								while (!rdr.EndOfStream)
+								{
+									string line = rdr.ReadLine();
+									string[] fields = line.Split(',');
+
+									if (fields[0] == pokemon.Get(userInt).ToString())
+									{
+										Console.WriteLine(new Pair(fields[0], fields[1], fields[2], fields[3]));
+									}
+								}
+							}
 						}
 					} else {
 						Console.WriteLine ("\nSorry, we could not find that Pokedex number.\n");
 					}
 				}
-
-				using (StreamReader rdr = new StreamReader("../../Pokedex.txt"))
-				{
-					rdr.ReadLine(); // skip column headers
-					while (!rdr.EndOfStream)
-					{
-						string line = rdr.ReadLine();
-						string[] fields = line.Split(',');
-					
-						if (fields[0] == pokemon.Get(userInt).ToString())
-						{
-							Console.WriteLine(new Pair(fields[0], fields[1], fields[2], fields[3]));
-						}
-					}
-				}
-
-
 
 				Convert.ToString (user);
 			}
